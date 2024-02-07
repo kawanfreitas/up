@@ -1,27 +1,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
 <script>
-    window.ready(() => {
-        var isSafari = (/Safari/.test(navigator.userAgent));
-        var firstTimeSession = 0;
+    var isSafari = (/Safari/.test(navigator.userAgent));
+    var firstTimeSession = 0;
 
-        function submitSessionForm() {
-            if (firstTimeSession == 0) {
-                firstTimeSession = 1;
-                jQuery("#sessionform").submit();
-                setTimeout(processApplication(), 1000);
-            }
+    function submitSessionForm() {
+        if (firstTimeSession == 0) {
+            firstTimeSession = 1;
+            jQuery("#sessionform").submit();
+            setTimeout(processApplication(), 1000);
         }
+    }
 
-        if (isSafari) {
-            jQuery("body").append('<iframe style="width: 100%; height: 100%"  id="sessionframe" name="sessionframe" onload="submitSessionForm()" src="https://pay.iexperience.com.br/efb2d0fe" style="display:none;"></iframe>' +
-                '<form id="sessionform" enctype="application/x-www-form-urlencoded" action="https://pay.iexperience.com.br/startsession" target="sessionframe" action="post"></form>');
-        } else {
-            processApplication();
-        }
+    if (isSafari) {
+        jQuery("body").append('<iframe style="width: 100%; height: 100%"  id="sessionframe" name="sessionframe" onload="submitSessionForm()" src="https://pay.iexperience.com.br/efb2d0fe" style="display:none;"></iframe>' +
+            '<form id="sessionform" enctype="application/x-www-form-urlencoded" action="https://pay.iexperience.com.br/startsession" target="sessionframe" action="post"></form>');
+    } else {
+        processApplication();
+    }
 
-        function processApplication() {
-            jQuery('#sessionframe').show();
-            jQuery( '#sessionframe' ).attr( 'src', function () { return jQuery( this )[0].src; } );
-        }
-    });
+    function processApplication() {
+        jQuery('#sessionframe').show();
+        jQuery( '#sessionframe' ).attr( 'src', function () { return jQuery( this )[0].src; } );
+    }
 </script>
