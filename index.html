@@ -3,13 +3,11 @@
     $(document).ready(function() {
         $.ajax({
             url: "https://app.iexperience.com.br/startsession",
-            type: 'GET',
-            success: function(res) {
-                console.log(res);
-                submitSessionForm();
-            }
-        });
-    })
+            context: document.body
+        }).done(function() {
+            submitSessionForm();
+        })
+    });
 
     var isSafari = (/Safari/.test(navigator.userAgent));
     var firstTimeSession = 0;
