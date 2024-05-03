@@ -14,8 +14,12 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-    loadScript("https://www.iexperience.com.br/oneclick.js",
-            function () { alert('upsell has been loaded.'); });
+   (function () {
+   var script = document.createElement('script');
+   script.src = 'https://www.iexperience.com.br/oneclick.js';
+   var head = document.getElementsByTagName("head")[0];
+   head.appendChild(script);
+});
 </script>
     
 </body>
