@@ -13,7 +13,10 @@
 </button>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<script type="text/javascript" src='https://www.iexperience.com.br/oneclick.js'/>
+<script type="text/javascript">
+    loadScript("https://www.iexperience.com.br/oneclick.js",
+            function () { alert('upsell has been loaded.'); });
+</script>
     
 </body>
 </html>
