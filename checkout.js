@@ -9,7 +9,7 @@ if (customCheckoutButton) {
             .then(response => response.json())
             .then(cart => {
                 // URL do seu checkout personalizado
-                var customCheckoutUrl = 'https://dev-pay.spacefy.com.br/checkout';
+                var customCheckoutUrl = 'https://dev.spacefy.com.br/checkout';
 
                 // Enviar dados do carrinho via AJAX para o checkout personalizado
                 postAjax(customCheckoutUrl, JSON.stringify(cart), function (response) {
