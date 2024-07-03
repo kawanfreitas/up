@@ -20,12 +20,7 @@ if (customCheckoutButton) {
                     method: 'GET'
                 })
                     .then(response => {
-                        if (response.ok) {
-                            // Redirecionar para a página de checkout da Shopify
-                            window.location.href = response.redirectUrl;
-                        } else {
-                            console.error('Erro ao enviar o carrinho:', response.statusText);
-                        }
+                        window.location.href = 'https://dev-pay.spacefy.com.br/checkout';
                     })
                     .catch(error => {
                         console.error('Erro ao obter o carrinho:', error);
