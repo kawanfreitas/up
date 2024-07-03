@@ -8,26 +8,12 @@ if (customCheckoutButton) {
         fetch('/cart.js')
             .then(response => response.json())
             .then(cart => {
-                // Converter os dados do carrinho em uma string de parâmetros de URL
-                const params = new URLSearchParams();
-                params.append('cart', JSON.stringify(cart));
-
-                // Construir a URL com os parâmetros
-                const url = `https://dev-pay.spacefy.com.br/shopify?${params.toString()}`;
-
-                // Fazer a requisição GET
-                fetch(url, {
-                    method: 'GET'
-                })
-                    .then(response => {
-                        window.location.href = 'https://dev-pay.spacefy.com.br/checkout';
-                    })
-                    .catch(error => {
-                        console.error('Erro ao obter o carrinho:', error);
-                    });
+                var customCheckoutUrl = 'https://dev-pay.spacefy.com.br/checkout?cart=' + encodeURIComponent(JSON.stringify(cart));
+                window.location.href = customCheckoutUrl;
             })
             .catch(error => {
-                console.error('Erro ao obter o carrinho:', error);
+                console.error('Erro ao obter os dados do carrinho:', error);
+                window.location.href = '/checkout';
             });
     });
 }
