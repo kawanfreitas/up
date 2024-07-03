@@ -4,23 +4,35 @@ if (customCheckoutButton) {
     customCheckoutButton.addEventListener('click', function (event) {
         event.preventDefault(); // Impede o comportamento padrão
 
-        // Pegar os dados do carrinho usando API Ajax da Shopify
+        // Obter os dados do carrinho
         fetch('/cart.js')
             .then(response => response.json())
             .then(cart => {
-                // URL do seu checkout personalizado
-                var customCheckoutUrl = 'https://dev.spacefy.com.br/checkout';
+                // Converter os dados do carrinho em uma string de parâmetros de URL
+                const params = new URLSearchParams();
+                params.append('cart', JSON.stringify(cart));
 
-                // Enviar dados do carrinho via AJAX para o checkout personalizado
-                postAjax(customCheckoutUrl, JSON.stringify(cart), function (response) {
-                    console.log('Resposta do checkout personalizado:', response);
-                    // Aqui você pode lidar com a resposta do seu checkout personalizado
-                    // Por exemplo, redirecionar o usuário após o processamento do checkout
-                    // window.location.href = 'https://seu-dominio.com/checkout-success';
-                });
+                // Construir a URL com os parâmetros
+                const url = `https://dev-pay.spacefy.com.br/checkout?${params.toString()}`;
+
+                // Fazer a requisição GET
+                fetch(url, {
+                    method: 'GET'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Redirecionar para a página de checkout da Shopify
+                            window.location.href = '/checkout';
+                        } else {
+                            console.error('Erro ao enviar o carrinho:', response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao obter o carrinho:', error);
+                    });
             })
             .catch(error => {
-                console.error('Erro ao pegar os dados do carrinho:', error);
+                console.error('Erro ao obter o carrinho:', error);
             });
     });
 }
