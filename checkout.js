@@ -22,7 +22,7 @@ if (customCheckoutButton) {
                     .then(response => {
                         if (response.ok) {
                             // Redirecionar para a página de checkout da Shopify
-                            window.location.href = response.url;
+                            window.location.href = response.redirectUrl;
                         } else {
                             console.error('Erro ao enviar o carrinho:', response.statusText);
                         }
