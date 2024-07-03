@@ -13,7 +13,7 @@ if (customCheckoutButton) {
                 params.append('cart', JSON.stringify(cart));
 
                 // Construir a URL com os parâmetros
-                const url = `https://dev-pay.spacefy.com.br/checkout?${params.toString()}`;
+                const url = `https://dev-pay.spacefy.com.br/shopify?${params.toString()}`;
 
                 // Fazer a requisição GET
                 fetch(url, {
@@ -22,7 +22,7 @@ if (customCheckoutButton) {
                     .then(response => {
                         if (response.ok) {
                             // Redirecionar para a página de checkout da Shopify
-                            window.location.href = '/checkout';
+                            window.location.href = response.url;
                         } else {
                             console.error('Erro ao enviar o carrinho:', response.statusText);
                         }
