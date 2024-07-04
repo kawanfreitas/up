@@ -4,9 +4,8 @@ var checkoutButtons = document.querySelectorAll('button[name="checkout"], input[
 checkoutButtons.forEach(function(button) {
     // Cria um novo botão personalizado
     var customCheckoutButton = document.createElement('button');
-    customCheckoutButton.textContent = 'Finalizar compra'; // Define o texto do botão
-    customCheckoutButton.style.backgroundColor = '#007bff'; // Altera a cor de fundo do botão
-    customCheckoutButton.style.color = '#ffffff'; // Altera a cor do texto do botão
+    customCheckoutButton.textContent = 'Finalizar compra';
+    customCheckoutButton.className = 'cart__checkout-button button'
     // Adicione mais estilos conforme desejado
 
     customCheckoutButton.addEventListener('click', function (event) {
