@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         customCheckoutButton.style.backgroundColor = '#007bff'; // Altera a cor de fundo do botão
         customCheckoutButton.style.color = '#ffffff'; // Altera a cor do texto do botão
         // Adicione mais estilos conforme desejado
-    }
+    });
 
 
     checkoutButtons.addEventListener('click', function (event) {
