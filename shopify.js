@@ -1,9 +1,9 @@
-let checkoutButtons = document.querySelectorAll('button[name="checkout"], input[name="checkout"]');
+var checkoutButtons = document.querySelectorAll('button[name="checkout"], input[name="checkout"]');
 
 // Itera sobre todos os botões encontrados
 checkoutButtons.forEach(function(button) {
     // Cria um novo botão personalizado
-    let customCheckoutButton = document.createElement('button');
+    var customCheckoutButton = document.createElement('button');
     customCheckoutButton.textContent = 'Finalizar compra';
     customCheckoutButton.className = 'cart__checkout-button button'
 
