@@ -1,7 +1,19 @@
-var customCheckoutButton = document.getElementById('spaceCheckoutButton');
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona todos os botões de finalizar compra na página
+    var checkoutButtons = document.querySelectorAll('button[name="checkout"], input[name="checkout"]');
 
-if (customCheckoutButton) {
-    customCheckoutButton.addEventListener('click', function (event) {
+    // Itera sobre todos os botões encontrados
+    checkoutButtons.forEach(function(button) {
+        // Cria um novo botão personalizado
+        var customCheckoutButton = document.createElement('button');
+        customCheckoutButton.textContent = 'Finalizar compra'; // Define o texto do botão
+        customCheckoutButton.style.backgroundColor = '#007bff'; // Altera a cor de fundo do botão
+        customCheckoutButton.style.color = '#ffffff'; // Altera a cor do texto do botão
+        // Adicione mais estilos conforme desejado
+    }
+
+
+    checkoutButtons.addEventListener('click', function (event) {
         event.preventDefault(); // Impede o comportamento padrão
 
         // Obter os dados do carrinho
@@ -16,25 +28,4 @@ if (customCheckoutButton) {
                 window.location.href = '/checkout';
             });
     });
-}
-
-function postAjax(url, data, success) {
-    var params = typeof data == 'string' ? data : Object.keys(data).map(
-        function (k) {
-            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-        }
-    ).join('&');
-
-    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState > 3 && xhr.status == 200) {
-            success(xhr.responseText);
-        }
-    };
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(params);
-
-    return xhr;
 }
